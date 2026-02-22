@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🚀 Future Store</title>
+<title>🚀 Future Store | Mohamed Al-Aloui</title>
 
 <style>
 body{
@@ -13,6 +13,7 @@ body{
   color:white;
   overflow-x:hidden;
   text-align:center;
+  scroll-behavior:smooth;
 }
 
 /* خلفية نجوم */
@@ -63,20 +64,87 @@ header{
   padding:40px;
 }
 
+/* ✨ Neon Effect */
+header h1{
+  color:#00ffff;
+  text-shadow:0 0 10px #00ffff, 0 0 20px #00ffff;
+}
+
 section{
   padding:30px;
+  max-width:800px;
+  margin:auto;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+
+section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+h2{
+  color:#00ffff;
 }
 
 a{
   color:#00ffff;
   text-decoration:none;
 }
+
+ul{
+  list-style:none;
+  padding:0;
+}
+
+li{
+  margin:10px 0;
+}
+
+/* 📊 Skill Bars */
+.skill{
+  margin:15px 0;
+}
+.bar{
+  background:#222;
+  border-radius:20px;
+  overflow:hidden;
+}
+.progress{
+  height:10px;
+  background:#00ffff;
+  width:0;
+  transition:2s;
+}
+
+/* 🔝 زر الرجوع للأعلى */
+#topBtn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#00ffff;
+  color:black;
+  border:none;
+  padding:10px 15px;
+  border-radius:50px;
+  cursor:pointer;
+  display:none;
+}
+
+/* 📄 زر CV */
+.cv-btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:10px 20px;
+  border:1px solid #00ffff;
+  border-radius:20px;
+}
 </style>
 </head>
 
 <body>
 
-<!-- Alien عند الدخول -->
 <div id="alienOverlay">
   <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="Alien">
 </div>
@@ -84,10 +152,59 @@ a{
 <header>
   <h1>Mohamed Al-Aloui</h1>
   <p>Web Developer & Cybersecurity Enthusiast</p>
+  <a href="#" class="cv-btn">Download CV</a>
 </header>
 
 <section>
+<h2>👋 About Me</h2>
+<p>
+Hello, I’m Mohamed Al-Aloui from Morocco.
+I am passionate about programming and web development, and I am gradually learning cybersecurity skills.
+I continuously improve my abilities and aim to work on practical tech projects in the future.
+</p>
+</section>
+
+<section>
+<h2>📊 Skills Progress</h2>
+
+<div class="skill">
+<p>HTML</p>
+<div class="bar"><div class="progress" style="width:90%"></div></div>
+</div>
+
+<div class="skill">
+<p>CSS</p>
+<div class="bar"><div class="progress" style="width:85%"></div></div>
+</div>
+
+<div class="skill">
+<p>JavaScript</p>
+<div class="bar"><div class="progress" style="width:70%"></div></div>
+</div>
+
+<div class="skill">
+<p>Python</p>
+<div class="bar"><div class="progress" style="width:75%"></div></div>
+</div>
+
+</section>
+
+<section>
+<h2>🔐 Security / Safety Tips</h2>
+<ul>
+<li>Use strong and long passwords</li>
+<li>Enable two-factor authentication (2FA)</li>
+<li>Avoid clicking unknown links or files</li>
+<li>Keep your operating system and software updated</li>
+<li>Do not share personal information with untrusted people</li>
+<li>Use a VPN when connected to public WiFi networks</li>
+<li>Always keep backups of important files</li>
+</ul>
+</section>
+
+<section>
 <h2>📩 Contact</h2>
+<p><strong>Location:</strong> Morocco</p>
 <p>Email: 
 <a href="mailto:Mohamedelaloui333@gmail.com">
 Mohamedelaloui333@gmail.com
@@ -103,6 +220,36 @@ m.o.h.a.m.e.d.9.9.9.9
 <h2>🚀 My Store</h2>
 <p>Products will appear here from Firebase.</p>
 </section>
+
+<button id="topBtn">↑</button>
+
+<script>
+
+/* ظهور تدريجي للأقسام */
+const sections = document.querySelectorAll("section");
+window.addEventListener("scroll", ()=>{
+  sections.forEach(sec=>{
+    if(sec.getBoundingClientRect().top < window.innerHeight - 100){
+      sec.classList.add("show");
+    }
+  });
+});
+
+/* زر الرجوع للأعلى */
+const topBtn = document.getElementById("topBtn");
+window.onscroll = function(){
+  if(document.documentElement.scrollTop > 300){
+    topBtn.style.display="block";
+  } else {
+    topBtn.style.display="none";
+  }
+};
+
+topBtn.onclick = function(){
+  window.scrollTo({top:0, behavior:"smooth"});
+};
+
+</script>
 
 </body>
 </html>
